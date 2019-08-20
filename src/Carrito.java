@@ -45,4 +45,13 @@ public class Carrito {
     public void setFormaPago(FormaPago formaPago) {
         this.formaPago = formaPago;
     }
+
+    public double checkout(){
+        double total = 0;
+        for (Articulo art: this.articuloList
+             ) {
+            total = total + art.getPrecio();
+        }
+        return total;
+    }
 }

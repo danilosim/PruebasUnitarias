@@ -1,3 +1,6 @@
+import java.util.Calendar;
+import java.util.Date;
+
 public class FormaPago {
     private int id;
     private String name;
@@ -31,5 +34,19 @@ public class FormaPago {
 
     public void setInteres(double interes) {
         this.interes = interes;
+    }
+
+    public double getPromoDia(double precio){
+        double nuevo_precio = 0;
+        Date theDate = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(theDate);
+        boolean tuesday = cal.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY;
+
+        if (tuesday){
+            return precio*0.95;
+        }
+
+        return nuevo_precio;
     }
 }

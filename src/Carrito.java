@@ -6,12 +6,14 @@ public class Carrito {
     private List<Articulo> articuloList = new ArrayList<>();
     private Zona zona;
     private FormaPago formaPago;
+    private boolean logueado;
 
-    public Carrito(double precioTotal, List<Articulo> articuloList, Zona zona, FormaPago formaPago) {
+    public Carrito(double precioTotal, List<Articulo> articuloList, Zona zona, FormaPago formaPago, boolean logueado) {
         this.precioTotal = precioTotal;
         this.articuloList = articuloList;
         this.zona = zona;
         this.formaPago = formaPago;
+        this.logueado = logueado;
     }
 
     public Carrito() {
@@ -49,11 +51,23 @@ public class Carrito {
         this.formaPago = formaPago;
     }
 
+    public boolean isLogueado() {
+        return logueado;
+    }
+
+    public void setLogueado(boolean logueado) {
+        this.logueado = logueado;
+    }
+
     public double checkout(){
         double total = 0;
         if (this.articuloList.isEmpty()){
             throw new IllegalStateException();
         }
+        if(!this.logueado){
+            throw new IllegalStateException();
+        }
+
         for (Articulo art: this.articuloList) {
             total = total + art.getPrecio();
         }

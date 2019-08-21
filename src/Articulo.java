@@ -11,6 +11,8 @@ public class Articulo {
         this.precio = precio;
     }
 
+    public Articulo(){}
+
     public int getId() {
         return id;
     }

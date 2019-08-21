@@ -73,4 +73,19 @@ public class Carrito {
         }
         return total;
     }
+
+    public boolean envio(){
+        return this.zona.getName().equals("Mendoza") || this.zona.getName().equals("Buenos Aires");
+    }
+
+    public int costoDeEnvio(){
+        if(this.articuloList.size()>=3){
+            return 0;
+        }
+        if (this.getZona().getName().equals("Mendoza")){
+            return 0;
+        } else if(this.getZona().getName().equals("Buenos Aires")){
+            return 100;
+        } else throw new IllegalStateException();
+    }
 }

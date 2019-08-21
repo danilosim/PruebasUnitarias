@@ -37,5 +37,89 @@ class CarritoTest {
         assertThrows(IllegalStateException.class, carrito::checkout);
     }
 
+    @org.junit.jupiter.api.Test
+    void envioZonaPermitida(){
+        Zona mendoza = new Zona();
+        mendoza.setName("Mendoza");
+        Carrito carrito = new Carrito();
+        carrito.setZona(mendoza);
+        assertTrue(carrito.envio());
+    }
+
+    @org.junit.jupiter.api.Test
+    void envioZonaNoPermitida(){
+        Zona sanJuan = new Zona();
+        sanJuan.setName("San Juan");
+        Carrito carrito = new Carrito();
+        carrito.setZona(sanJuan);
+        assertFalse(carrito.envio());
+    }
+
+    @org.junit.jupiter.api.Test
+    void costoEnvioMendoza(){
+        Zona mendoza = new Zona();
+        mendoza.setName("Mendoza");
+        Carrito carrito = new Carrito();
+        carrito.setZona(mendoza);
+        assertEquals(0, carrito.costoDeEnvio());
+    }
+
+    @org.junit.jupiter.api.Test
+    void costoEnvioBuenosAires(){
+        Zona buenosAires = new Zona();
+        buenosAires.setName("Buenos Aires");
+        Carrito carrito = new Carrito();
+        carrito.setZona(buenosAires);
+        assertEquals(100, carrito.costoDeEnvio());
+    }
+
+    @org.junit.jupiter.api.Test
+    void costoEnvioMenosTresArticulos(){
+        List<Articulo> articuloList = new ArrayList<>();
+        for (int i=0; i<2 ; i++){
+            Articulo articulo = new Articulo();
+            articuloList.add(articulo);
+        }
+        Zona buenosAires = new Zona();
+        buenosAires.setName("Buenos Aires");
+        Carrito carrito = new Carrito();
+        carrito.setZona(buenosAires);
+        carrito.setArticuloList(articuloList);
+        assertEquals(100, carrito.costoDeEnvio());
+    }
+
+    @org.junit.jupiter.api.Test
+    void costoEnvioTresArticulos(){
+        List<Articulo> articuloList = new ArrayList<>();
+        for (int i=0; i<3 ; i++){
+            Articulo articulo = new Articulo();
+            articuloList.add(articulo);
+        }
+        Zona buenosAires = new Zona();
+        buenosAires.setName("Buenos Aires");
+        Carrito carrito = new Carrito();
+        carrito.setZona(buenosAires);
+        carrito.setArticuloList(articuloList);
+        assertEquals(0, carrito.costoDeEnvio());
+    }
+
+    @org.junit.jupiter.api.Test
+    void costoEnvioMasTresArticulos(){
+        List<Articulo> articuloList = new ArrayList<>();
+        for (int i=0; i<4 ; i++){
+            Articulo articulo = new Articulo();
+            articuloList.add(articulo);
+        }
+        Zona buenosAires = new Zona();
+        buenosAires.setName("Buenos Aires");
+        Carrito carrito = new Carrito();
+        carrito.setZona(buenosAires);
+        carrito.setArticuloList(articuloList);
+        assertEquals(0, carrito.costoDeEnvio());
+    }
+
+
+
+
 
 }

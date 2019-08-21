@@ -69,9 +69,25 @@ public class Carrito {
         }
 
         for (Articulo art: this.articuloList) {
-            total = total + art.getPrecio();
+            total = total + this.calcularPrecio(new Date(),art);
         }
         return total;
+    }
+
+    public double calcularPrecio(Date date, Articulo art){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        switch (art.getTipo().getName()){
+            case "electronico":
+                boolean martes = cal.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY;
+                if (martes){
+                    return art.getPrecio()*0.85;
+                }
+                break;
+            default:
+                return art.getPrecio();
+        }
+        return art.getPrecio();
     }
 
     public boolean envio(){

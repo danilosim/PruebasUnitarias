@@ -6,6 +6,9 @@ public class Tipo {
         this.id = id;
         this.name = name;
     }
+    public Tipo(String name) {
+        this.name = name;
+    }
 
     public Tipo(){}
 

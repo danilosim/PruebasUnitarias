@@ -117,7 +117,20 @@ class CarritoTest {
         carrito.setArticuloList(articuloList);
         assertEquals(0, carrito.costoDeEnvio());
     }
+    @org.junit.Test
+        public void calcularPrecio() throws Exception {
+            //TODO: hacerlo bien
+            double precioCorrecto = 85;
+            Carrito carrito = new Carrito();
+            Articulo art1 = new Articulo(1,"microondas",new Tipo("electronico"), 100);
+            List<Articulo> articuloList = new ArrayList<>();
+            articuloList.add(art1);
+            articuloList.add(art1);
+            articuloList.add(art1);
+            carrito.setArticuloList(articuloList);
+            assertEquals(precioCorrecto, carrito.calcularPrecio(new GregorianCalendar(2019, Calendar.AUGUST, 20).getTime(), art1), 0);
 
+        }
 
 
 

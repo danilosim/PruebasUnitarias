@@ -12,6 +12,10 @@ public class FormaPago {
         this.interes = interes;
     }
 
+    public FormaPago (){
+
+    }
+
     public int getId() {
         return id;
     }

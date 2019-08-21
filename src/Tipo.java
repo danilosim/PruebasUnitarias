@@ -7,6 +7,8 @@ public class Tipo {
         this.name = name;
     }
 
+    public Tipo(){}
+
     public int getId() {
         return id;
     }

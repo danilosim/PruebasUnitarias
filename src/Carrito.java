@@ -14,6 +14,9 @@ public class Carrito {
         this.formaPago = formaPago;
     }
 
+    public Carrito() {
+    }
+
     public double getPrecioTotal() {
         return precioTotal;
     }
@@ -48,8 +51,10 @@ public class Carrito {
 
     public double checkout(){
         double total = 0;
-        for (Articulo art: this.articuloList
-             ) {
+        if (this.articuloList.isEmpty()){
+            throw new IllegalStateException();
+        }
+        for (Articulo art: this.articuloList) {
             total = total + art.getPrecio();
         }
         return total;

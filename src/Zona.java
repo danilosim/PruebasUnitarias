@@ -9,6 +9,9 @@ public class Zona {
         this.precioEnvio = precioEnvio;
     }
 
+    public Zona() {
+    }
+
     public int getId() {
         return id;
     }

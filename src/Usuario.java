@@ -5,13 +5,15 @@ public class Usuario {
     private long telefono;
     private int anionacimiento;
     private int dni;
+    private String email;
 
-    public Usuario(String nombre, int id, long telefono , int anionacimiento, int dni) {
+    public Usuario(String nombre, int id, long telefono , int anionacimiento, int dni, String email) {
         this.nombre = nombre;
         this.id = id;
         this.telefono = telefono;
         this.anionacimiento =  anionacimiento;
         this.dni = dni;
+        this.email = email;
     }
 
     public Usuario() {
@@ -67,5 +69,19 @@ public class Usuario {
     }
     public int getDni(){
         return dni;
+    }
+    
+    public String getEmail() {
+		return email;
+	}
+    
+    public void EmailValidation(String email) {
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        if(email.matches(regex)) {
+        	this.email = email;
+        }
+        else {
+        	throw new IllegalArgumentException("Correo no Valido");
+        }
     }
 }

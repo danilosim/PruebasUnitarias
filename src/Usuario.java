@@ -2,11 +2,13 @@ public class Usuario {
     private String nombre;
     private int id;
     private long telefono;
+    private int anionacimiento;
 
-    public Usuario(String nombre, int id, long telefono) {
+    public Usuario(String nombre, int id, long telefono , int anionacimiento) {
         this.nombre = nombre;
         this.id = id;
         this.telefono = telefono;
+        this.anionacimiento =  anionacimiento;
     }
 
     public Usuario() {
@@ -39,5 +41,17 @@ public class Usuario {
             this.telefono = telefono;
         }
 
+    }
+
+    public void setAnioNacimiento(Integer anionacimiento){
+        if(anionacimiento.toString().length()>2001){
+            throw new IllegalStateException();
+        }else{
+            this.anionacimiento = anionacimiento;
+        }
+    }
+
+    public int getAnioNacimiento(){
+        return this.anionacimiento;
     }
 }

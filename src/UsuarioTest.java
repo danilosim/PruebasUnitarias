@@ -39,5 +39,21 @@ class UsuarioTest {
             usuario.setDni(40597260);
         });
     }
+    
+     @Test
+    void testValidEmail() {
+    	Usuario usuario1 = new Usuario();
+    	usuario1.EmailValidation("martin12@gmail.com");
+    	if(usuario1.getEmail() != "martin12@gmail.com") {
+    		fail("No se asigno el email correctamente");
+    	}
+    }
+    
+    @Test
+    void testInvalidEmail() {
+    	Usuario usuario1 = new Usuario();
+    	assertThrows(IllegalArgumentException.class, () -> usuario1.EmailValidation("laura12@--gmail.com"),"Email invalido, debería tirar una Excepcion");
+    
+    }
 
 }

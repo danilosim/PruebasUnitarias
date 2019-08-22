@@ -27,4 +27,17 @@ class UsuarioTest {
         });
     }
 
+    @Test
+    void setAnioNacimientoYdni(){
+        Usuario usuario = new Usuario();
+        usuario.setAnioNacimiento(2003);
+        assertThrows(IllegalStateException.class, () ->{
+            usuario.setAnioNacimiento(2003);
+        });
+        usuario.setDni(40597260);
+        assertThrows(IllegalStateException.class, () ->{
+            usuario.setDni(40597260);
+        });
+    }
+
 }

@@ -1,14 +1,17 @@
+import java.time.Year;
 public class Usuario {
     private String nombre;
     private int id;
     private long telefono;
     private int anionacimiento;
+    private int dni;
 
-    public Usuario(String nombre, int id, long telefono , int anionacimiento) {
+    public Usuario(String nombre, int id, long telefono , int anionacimiento, int dni) {
         this.nombre = nombre;
         this.id = id;
         this.telefono = telefono;
         this.anionacimiento =  anionacimiento;
+        this.dni = dni;
     }
 
     public Usuario() {
@@ -44,7 +47,7 @@ public class Usuario {
     }
 
     public void setAnioNacimiento(Integer anionacimiento){
-        if(anionacimiento.toString().length()>2001){
+        if(anionacimiento>(Year.now().getValue()-18)){
             throw new IllegalStateException();
         }else{
             this.anionacimiento = anionacimiento;
@@ -53,5 +56,16 @@ public class Usuario {
 
     public int getAnioNacimiento(){
         return this.anionacimiento;
+    } 
+
+    public void setDni(int dni){
+        if(String.valueOf(dni).length()<=8){
+            this.dni = dni;
+        }else{
+            throw new IllegalStateException();
+        }   
+    }
+    public int getDni(){
+        return dni;
     }
 }
